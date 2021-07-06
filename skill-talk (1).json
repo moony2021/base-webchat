@@ -1,0 +1,190 @@
+{
+  "intents": [
+    {
+      "intent": "guide",
+      "examples": [
+        {
+          "text": "how can i find the motors"
+        },
+        {
+          "text": "how to control the robot?"
+        },
+        {
+          "text": "where can i find"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "welcoming",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_4_1625532818415",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_6_1625533621055",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1625533621060",
+      "previous_sibling": "handler_9_1625533621060"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_4_1625532818415",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1625533620337"
+    },
+    {
+      "type": "event_handler",
+      "parent": "slot_6_1625533621055",
+      "event_name": "input",
+      "dialog_node": "handler_9_1625533621060"
+    },
+    {
+      "type": "standard",
+      "title": "welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "hi"
+              },
+              {
+                "text": "hello"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#welcoming",
+      "dialog_node": "node_3_1625373404241",
+      "previous_sibling": "node_6_1625373989765"
+    },
+    {
+      "type": "standard",
+      "title": "guide",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "you can move the slider to determine the movement ,press save then on"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#guide",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_4_1625532818415",
+      "previous_sibling": "node_3_1625373404241"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello nice to meet you, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_6_1625373989765"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1625532818415",
+      "dialog_node": "slot_6_1625533621055",
+      "previous_sibling": "handler_1_1625533620337"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "talk",
+  "language": "en",
+  "description": ""
+}
